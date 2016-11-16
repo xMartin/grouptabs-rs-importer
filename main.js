@@ -1,3 +1,4 @@
+/* globals remoteStorage: false, UUID: false, PouchDB: false, React: false, ReactDOM: false */
 (function () {
   'use strict';
 
@@ -87,11 +88,11 @@
 
   const AppContainer = React.createClass({
 
-    getInitialState() {
+    getInitialState () {
       return defaultState;
     },
 
-    componentDidMount() {
+    componentDidMount () {
       remoteStorage.access.claim('gruppenkasse', 'r');
       remoteStorage.displayWidget();
 
@@ -117,7 +118,7 @@
       });
     },
 
-    onMigrateButtonClick(tab) {
+    onMigrateButtonClick (tab) {
       this.setState({
         migrationMap: Object.assign({}, this.state.migrationMap, {
           [tab]: 'LOADING'
@@ -137,7 +138,7 @@
       .catch(console.error.bind(console));
     },
 
-    render() {
+    render () {
       if (this.state.connected) {
         return React.createElement(App, Object.assign({}, this.state, {onMigrateButtonClick: this.onMigrateButtonClick}));
       }
