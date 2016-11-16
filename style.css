@@ -1,5 +1,14 @@
 main {
   font-family: sans-serif;
-  margin-top: 44px;  /* spacing for remoteStorage widget */
-  margin-right: 44px;  /* spacing for remoteStorage widget */
+}
+
+@media (min-width: 501px) {
+  main {
+    margin-right: 209px;  /* spacing for remoteStorage widget */
+  }
+}
+@media (max-width: 500px) {
+  main {
+    margin-top: 52px;  /* spacing for remoteStorage widget */
+  }
 }
