@@ -1,5 +1,21 @@
-main {
-  font-family: sans-serif;
+@font-face {
+  font-family: SourceSansPro-Regular;
+  src: url('fonts/SourceSansPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: SourceSansPro-Semibold;
+  src: url('fonts/SourceSansPro-Semibold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  color: #131313;
+  font-size: 18px;
+  background: #f2f2f2;
+  font-family: SourceSansPro-Regular, sans-serif;
 }
 
 @media (min-width: 501px) {
@@ -13,9 +29,30 @@ main {
   }
 }
 
+button {
+  font: inherit;
+  background: #ddd;
+  color: inherit;
+  border: none;
+  box-sizing: border-box;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 10px;
+  margin: 0;
+  cursor: pointer;
+}
+
+h1 {
+  font-family: SourceSansPro-Semibold, sans-serif;
+  font-weight: normal;
+}
+
 th {
   text-align: left;
   padding-right: 8px;
+  font-family: SourceSansPro-Semibold, sans-serif;
+  font-weight: normal;
+  height: 44px;
 }
 
 footer {
