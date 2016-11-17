@@ -17,3 +17,8 @@ th {
   text-align: left;
   padding-right: 8px;
 }
+
+footer {
+  font-size: small;
+  margin-top: 2em;
+}
