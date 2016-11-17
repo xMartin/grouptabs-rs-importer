@@ -12,3 +12,8 @@ main {
     margin-top: 52px;  /* spacing for remoteStorage widget */
   }
 }
+
+th {
+  text-align: left;
+  padding-right: 8px;
+}

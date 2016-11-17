@@ -139,23 +139,46 @@
     },
 
     render () {
-      if (this.state.connected) {
-        return React.createElement(App, Object.assign({}, this.state, {onMigrateButtonClick: this.onMigrateButtonClick}));
-      }
-
-      return null;
+      return React.createElement(App, Object.assign({}, this.state, {onMigrateButtonClick: this.onMigrateButtonClick}));
     }
   });
 
   const App = (props) => {
+    if (!props.connected) {
+      return (
+        el('div', null,
+          el('p', null,
+            'Copy tabs from your ',
+            el('a', {href: 'https://remotestorage.io'}, 'Remote Storage'),
+            ' to the new ',
+            el('a', {href: 'http://grouptabs-app.xmartin.de'}, 'grouptabs-app.xmartin.de'),
+            '.'
+          ),
+          el('p', null, 'Start by connecting the remote storage.')
+        )
+      );
+    }
+
     if (props.loading) {
       return el('p', null, 'fetching transactions from your remote storage…');
     }
 
     return (
       el('div', null,
-        el('p', null, 'Found the following tabs in your remote storage. By clicking "migrate" your data will be migrated to a new tab on the new alpha version.'),
-        el('ul', null,
+        el('p', null, 'Found the following tabs in your Remote Storage:'),
+        el(TabList, props),
+        el('p', null, 'Clicking "migrate" will copy your data to a new tab on ',
+          el('a', {href: 'http://grouptabs-app.xmartin.de'}, 'grouptabs-app.xmartin.de'),
+          '. Enter the "new ID" in the "open existing tab" form in the app to display the tab.'
+        )
+      )
+    );
+  };
+
+  const TabList = (props) => {
+    return (
+      el('table', null,
+        el('tbody', null,
           props.tabs.map((tab) => {
             return el(TabRow, {key: tab, tab, onButtonClick: props.onMigrateButtonClick, status: props.migrationMap[tab]});
           })
@@ -166,14 +189,18 @@
 
   const TabRow = (props) => {
     return (
-      el('li', null,
-        props.tab,
-        ' ',
+      el('tr', null,
+        el('th', null, props.tab),
         props.status === 'LOADING'
-        ? '...'
+        ? el('td', null, 'copying...')
         : props.status
-          ? el('code', null, props.status)
-          : el('button', {onClick: props.onButtonClick.bind(null, props.tab)}, 'migrate')
+          ? el('td', null,
+              'new ID: ',
+              el('code', null, props.status)
+            )
+          : el('td', null,
+              el('button', {onClick: props.onButtonClick.bind(null, props.tab)}, 'migrate')
+            )
       )
     );
   };
