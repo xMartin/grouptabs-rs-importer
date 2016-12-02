@@ -6,6 +6,6 @@
   "extends": ["standard"],
   "rules": {
     "semi": ["error", "always"],
-    "padded-blocks": false
+    "padded-blocks": ["error", "never"]
   }
 }
