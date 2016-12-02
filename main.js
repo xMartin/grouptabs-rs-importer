@@ -1,8 +1,7 @@
 /* globals remoteStorage: false, UUID: false, PouchDB: false, React: false, ReactDOM: false */
-(function () {
-  'use strict';
-
-  function getTransactions () {
+'use strict';
+{
+  const getTransactions = () => {
     const baseClient = remoteStorage.scope('/gruppenkasse/transactions/');
 
     return baseClient.getListing('/').then((listing) => {
@@ -10,17 +9,17 @@
 
       return Promise.all(transactionIds.map((transactionId) => baseClient.getObject(transactionId)));
     });
-  }
+  };
 
-  function listTabs (transactions) {
+  const listTabs = (transactions) => {
     return transactions.reduce((tabs, transaction) => {
       const tab = transaction.box;
 
       return tabs.includes(tab) ? tabs : tabs.concat(tab);
     }, []);
-  }
+  };
 
-  function transformTransaction (transaction) {
+  const transformTransaction = (transaction) => {
     const date = new Date(transaction.date).toJSON();
 
     const payingParticipants = transaction.payments;
@@ -45,22 +44,22 @@
       transactionType: 'SHARED',
       type: 'transaction'
     };
-  }
+  };
 
-  function transformTransactions (transactions) {
+  const transformTransactions = (transactions) => {
     return transactions.map(transformTransaction);
-  }
+  };
 
-  function generateDatabaseId () {
+  const generateDatabaseId = () => {
     const chars = '0123456789abcdefghijklmnopqrstuvwxyz';
     let result = '';
     for (let i = 0; i < 7; ++i) {
       result += chars.substr(Math.floor(Math.random() * chars.length), 1);
     }
     return result;
-  }
+  };
 
-  function pushToDatabase (tabName, transactions) {
+  const pushToDatabase = (tabName, transactions) => {
     const docs = transactions.concat({
       _id: 'info',
       name: tabName,
@@ -74,7 +73,7 @@
       db.bulkDocs(docs)
       .then(() => dbName)
     );
-  }
+  };
 
   const defaultState = {
     transactions: [],
@@ -206,5 +205,4 @@
   };
 
   ReactDOM.render(el(AppContainer), document.getElementById('main'));
-
-})();
+}
