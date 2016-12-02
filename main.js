@@ -75,7 +75,7 @@
     );
   };
 
-  const defaultState = {
+  const initialState = {
     transactions: [],
     tabs: [],
     connected: false,
@@ -88,7 +88,7 @@
   const AppContainer = React.createClass({
 
     getInitialState () {
-      return defaultState;
+      return initialState;
     },
 
     componentDidMount () {
@@ -113,7 +113,7 @@
       });
 
       remoteStorage.on('disconnected', () => {
-        this.setState(defaultState);
+        this.setState(initialState);
       });
     },
 
