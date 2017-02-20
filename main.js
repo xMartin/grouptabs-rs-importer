@@ -67,7 +67,7 @@
     });
 
     const dbName = generateDatabaseId();
-    const db = new PouchDB('http://grouptabs-app.xmartin.de:5984/' + encodeURIComponent('tab/' + dbName));
+    const db = new PouchDB('https://grouptabs-app.xmartin.de:5984/' + encodeURIComponent('tab/' + dbName));
 
     return (
       db.bulkDocs(docs)
@@ -150,7 +150,7 @@
             'Copy tabs from your ',
             el('a', {href: 'https://remotestorage.io'}, 'Remote Storage'),
             ' to the new ',
-            el('a', {href: 'http://grouptabs-app.xmartin.de'}, 'grouptabs-app.xmartin.de'),
+            el('a', {href: 'https://grouptabs-app.xmartin.de'}, 'grouptabs-app.xmartin.de'),
             '.'
           ),
           el('p', null, 'Start by connecting the remote storage.')
