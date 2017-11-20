@@ -1,6 +1,8 @@
 /* globals remoteStorage: false, UUID: false, PouchDB: false, React: false, ReactDOM: false */
 'use strict';
 {
+  const remoteStorage = new RemoteStorage();
+
   const getTransactions = () => {
     const baseClient = remoteStorage.scope('/gruppenkasse/transactions/');
 
@@ -93,7 +95,9 @@
 
     componentDidMount () {
       remoteStorage.access.claim('gruppenkasse', 'r');
-      remoteStorage.displayWidget();
+
+      const widget = new Widget(remoteStorage);
+      widget.attach();
 
       remoteStorage.on('connected', () => {
         this.setState({
