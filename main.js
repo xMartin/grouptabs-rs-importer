@@ -85,7 +85,7 @@
 
   const el = React.createElement;
 
-  const AppContainer = React.createClass({
+  const AppContainer = createReactClass({
 
     getInitialState () {
       return initialState;
