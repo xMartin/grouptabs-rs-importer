@@ -150,7 +150,7 @@
             'Copy tabs from your ',
             el('a', {href: 'https://remotestorage.io'}, 'Remote Storage'),
             ' to the new ',
-            el('a', {href: 'https://grouptabs-app.xmartin.de'}, 'grouptabs-app.xmartin.de'),
+            el('a', {href: 'https://app.grouptabs.net'}, 'app.grouptabs.net'),
             '.'
           ),
           el('p', null, 'Start by connecting the remote storage.')
@@ -167,7 +167,7 @@
         el('p', null, 'Found the following tabs in your Remote Storage:'),
         el(TabList, props),
         el('p', null, 'Clicking "migrate" will copy your data to a new tab on ',
-          el('a', {href: 'http://grouptabs-app.xmartin.de'}, 'grouptabs-app.xmartin.de'),
+          el('a', {href: 'https://app.grouptabs.net'}, 'app.grouptabs.net'),
           '. Enter the "new ID" in the "open existing tab" form in the app to display the tab.'
         )
       )
