@@ -69,7 +69,7 @@
     });
 
     const dbName = generateDatabaseId();
-    const db = new PouchDB('https://grouptabs-app.xmartin.de:5984/' + encodeURIComponent('tab/' + dbName));
+    const db = new PouchDB('https://backend.grouptabs.net/' + encodeURIComponent('tab/' + dbName));
 
     return (
       db.bulkDocs(docs)
